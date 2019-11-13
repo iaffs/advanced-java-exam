@@ -1,4 +1,4 @@
-package no.ingridmarcin;
+package no.ingridmarcin.taskmanager;
 
 import javax.sql.DataSource;
 
