@@ -1,1 +1,4 @@
-CREATE TABLE projects(id serial primary key, name varchar(100));
+CREATE TABLE projects (
+        id serial primary key,
+        name varchar(100)
+);
