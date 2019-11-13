@@ -1,7 +1,5 @@
-package no.ingridmarcin;
+package no.ingridmarcin.taskmanager;
 
-import no.ingridmarcin.taskmanager.Member;
-import no.ingridmarcin.taskmanager.MemberDao;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.Test;
 

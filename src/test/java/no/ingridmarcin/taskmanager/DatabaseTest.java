@@ -1,4 +1,4 @@
-package no.ingridmarcin;
+package no.ingridmarcin.taskmanager;
 
 import org.flywaydb.core.Flyway;
 import org.h2.jdbcx.JdbcDataSource;

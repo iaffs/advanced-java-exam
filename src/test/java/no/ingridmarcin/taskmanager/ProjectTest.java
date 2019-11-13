@@ -1,7 +1,5 @@
-package no.ingridmarcin;
+package no.ingridmarcin.taskmanager;
 
-import no.ingridmarcin.taskmanager.Project;
-import no.ingridmarcin.taskmanager.ProjectDao;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.Test;
 import java.sql.SQLException;
