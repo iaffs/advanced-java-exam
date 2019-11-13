@@ -1,0 +1,17 @@
+@startuml
+
+MemberToProject <-- Member
+MemberToProject <-- Project
+
++class Member {
+}
+
++class MemberToProject {
+}
+
++class Project {
+}
+
++class TaskManager {
+}
+@enduml
