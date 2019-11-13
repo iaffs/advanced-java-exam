@@ -1,5 +1,6 @@
 package no.ingridmarcin;
 
+
 import org.postgresql.ds.PGSimpleDataSource;
 import org.postgresql.util.PSQLException;
 import org.flywaydb.core.Flyway;
@@ -136,6 +137,7 @@ public class TaskManager {
                         "-------------------------\n");
     }
 
+
     private static PGSimpleDataSource getDataSource() throws IOException {
         Properties properties = new Properties();
         properties.load(new FileReader("taskmanager.properties"));
@@ -182,6 +184,8 @@ public class TaskManager {
             addNewMemberInterface(input);
         }
     }
+
+
 
     private static void assignNewProject(Scanner input, ProjectDao projectDao, MemberToProjectDao memberToProjectDao,
                                          MemberToProject memberToProject, MemberDao memberDao) throws SQLException, IOException {
