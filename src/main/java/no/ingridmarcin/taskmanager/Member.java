@@ -28,9 +28,17 @@ public class Member {
         this.id = id;
     }
 
+    public long getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        return   id + "  |  " + memberName  + " " + mail + "\n";
+        return "Member{" +
+                "mail='" + mail + '\'' +
+                "memberName='" + memberName + '\'' +
+                ", id=" + id +
+                '}';
     }
 
     @Override

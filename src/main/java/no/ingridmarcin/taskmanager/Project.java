@@ -41,6 +41,9 @@ public class Project {
 
     @Override
     public String toString() {
-        return   id + "  |  " + name +  "\n";
+        return "Project{" +
+                "projectName='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
