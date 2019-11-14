@@ -8,14 +8,14 @@ public class HttpClient {
     private String requestTarget;
     private int port;
 
-    public HttpClient(String host, int port, String requestTarget) {
+    public HttpClient(String host,int port, String requestTarget) {
         this.host = host;
         this.requestTarget = requestTarget;
         this.port = port;
     }
 
     public static void main(String[] args) throws IOException {
-        new HttpClient("urlecho.appspot.com", 80, "/echo?status=200&Content-Type=text%2Fhtml&body=Hello%20world!").executeRequest();
+        new HttpClient("urlecho.appspot.com",  80,"/echo?body=Hello%20World!").executeRequest();
     }
 
     HttpClientResponse executeRequest() throws IOException {
