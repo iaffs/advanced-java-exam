@@ -143,18 +143,18 @@ body {
 ### Koden
 
 * [x] `mvn package` bygger en executable jar-fil
-* [ ] Koden inneholder et godt sett med tester
+* [x] Koden inneholder et godt sett med tester
 * [x] `java -jar target/...jar` (etter `mvn package`) lar bruker legge til å liste ut data fra databasen
 * [x] Programmet leser `dataSource.url`, `dataSource.username` og `dataSource.password` fra `task-manager.properties` for å connecte til databasen
 * [x] Programmet bruker Flywaydb for å sette opp databaseskjema
-* [ ] Server skriver nyttige loggmeldinger, inkludert informasjon om hvilken URL den kjører på ved oppstart
+* [x] Server skriver nyttige loggmeldinger, inkludert informasjon om hvilken URL den kjører på ved oppstart
 * [x] `.gitignore` inneholder nødvendige filer
 
 ### Funksjonalitet
 
 * [x] Programmet kan liste prosjektdeltagere fra databasen
 * [x] Programmet lar bruker opprette nye prosjektdeltagere i databasen
-* [ ] Programmet kan opprette og liste prosjektoppgaver fra databasen
+* [x] Programmet kan opprette og liste prosjektoppgaver fra databasen
 
 
 ## Vedlegg: Mulighet for ekstrapoeng
@@ -166,5 +166,5 @@ body {
 * [ ] Rammeverk rundt Http-håndtering (en god HttpMessage class med HttpRequest og HttpResponse subtyper) som gjenspeiler RFC7230
 * [ ] Korrekt håndtering av norske tegn i HTTP
 * [ ] God bruk av DAO-pattern
-* [ ] Link til video med god demonstrasjon av ping-pong programmering
+* [x] Link til video med god demonstrasjon av ping-pong programmering
 * [ ] Annet
