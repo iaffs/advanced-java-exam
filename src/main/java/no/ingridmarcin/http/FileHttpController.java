@@ -21,7 +21,7 @@ class FileHttpController implements HttpController {
     @Override
     public void handle(String requestPath, String path, Map<String, String> queryParameters, String body, OutputStream outputStream) throws IOException {
         File file = new File(httpServer.getFileLocation() + path);
-        Logger.debug("Requesting fine {}", file);
+        Logger.debug("Requesting file {}", file);
         if (file.isDirectory()) {
             file = new File(file, "index.html");
         }
@@ -32,7 +32,7 @@ class FileHttpController implements HttpController {
                     "Connenction: close\r\n" +
                     "\r\n").getBytes());
             // loading body to the http package under the header
-            try (FileInputStream fileInputStream = new FileInputStream(File)) {
+            try (FileInputStream fileInputStream = new FileInputStream(file)) {
                 fileInputStream.transferTo(outputStream);
             }
         } else {

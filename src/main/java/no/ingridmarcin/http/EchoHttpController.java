@@ -12,9 +12,9 @@ class EchoHttpController implements HttpController {
             queryParameters = HttpServer.parseQueryString(body);
         }
 
-        String status = queryParameters.getOrDefault("Status", "200");
+        String status = queryParameters.getOrDefault("status", "200");
         String location = queryParameters.getOrDefault("Location", null);
-        String responseBody = queryParameters.getOrDefault("Body", "Hello World");
+        String responseBody = queryParameters.getOrDefault("body", "Hello World");
         int contentLength = responseBody.length();
         outputStream.write(("HTTP/1.1 " + status + " OK\r\n" +
                 "Content-Type: text/html\r\n" +

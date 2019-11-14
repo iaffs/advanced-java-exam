@@ -1,11 +1,15 @@
 package no.ingridmarcin.http;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HttpMessage {
+    private static final Logger logger = LoggerFactory.getLogger(HttpServer.class);
 
     static String readLine(InputStream inputStream) throws IOException {
         StringBuilder line = new StringBuilder();
@@ -27,7 +31,19 @@ public class HttpMessage {
             int colonPos = headerLine.indexOf(':');
             headers.put(headerLine.substring(0, colonPos).trim(),
                     headerLine.substring(colonPos + 1).trim());
+        }
+        return  headers;
+    }
 
+    static String readBody(Map<String, String> headers, InputStream inputStream) throws IOException {
+        if (headers.containsKey("Content-Length")) {
+            StringBuilder body = new StringBuilder();
+            for (int i = 0; i < Integer.parseInt(headers.get("Content-Length")); i++) {
+                body.append((char) inputStream.read());
+            }
+            return body.toString();
+        } else {
+            return null;
         }
     }
 }
