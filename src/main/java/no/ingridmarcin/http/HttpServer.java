@@ -44,7 +44,7 @@ public class HttpServer {
             try (Socket socket = serverSocket.accept()) {
 
                 String requestLine = HttpMessage.readLine(socket.getInputStream());
-                if(requestLine.isBlank()) continue;
+                if (requestLine.isBlank()) continue;
 
                 logger.debug("Handling request: {}", requestLine);
                 Map<String, String> headers = readHeaders(socket.getInputStream());
@@ -68,7 +68,7 @@ public class HttpServer {
 
     public static Map<String, String> parseQueryParameters(String requestTarget) {
         int questionPos = requestTarget.indexOf("?");
-        if(questionPos > 0) {
+        if (questionPos > 0) {
             String query = requestTarget.substring(questionPos+1);
             return parseQueryString(query);
         }
@@ -78,6 +78,7 @@ public class HttpServer {
     public static Map<String, String> parseQueryString(String query) {
         Map<String,String> parameters = new HashMap<>();
         for(String parameter : query.split("&")) {
+
             int equalsPos = parameter.indexOf("=");
             String paramName = parameter.substring(0, equalsPos);
             String paramValue = parameter.substring(equalsPos+1);

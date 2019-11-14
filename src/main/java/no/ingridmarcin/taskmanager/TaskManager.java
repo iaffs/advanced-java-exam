@@ -26,7 +26,7 @@ public class TaskManager {
                 "**********\n"
                 + "1. Members \n"
                 + "2. Projects \n"
-                + "3. Assign member to a project\n"
+                + "3. Assign member to a project \n"
                 + "4. Exit program");
         int userChoice = Integer.parseInt(input.nextLine());
 
@@ -157,7 +157,7 @@ public class TaskManager {
         String projectName = input.nextLine();
 
         if (projectName.isEmpty()) {
-            System.out.println("You didnt write any name. Try again");
+            System.out.println("You didn't write any name. Try again");
             addNewProjectInterface(input);
         } else {
             Project project = new Project();
@@ -184,7 +184,6 @@ public class TaskManager {
             addNewMemberInterface(input);
         }
     }
-
 
 
     private static void assignNewProject(Scanner input, ProjectDao projectDao, MemberToProjectDao memberToProjectDao,

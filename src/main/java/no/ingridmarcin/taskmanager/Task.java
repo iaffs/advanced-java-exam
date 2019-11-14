@@ -1,6 +1,7 @@
 package no.ingridmarcin.taskmanager;
 
 
-public class Tasks {
+public class Task {
+
 
 }

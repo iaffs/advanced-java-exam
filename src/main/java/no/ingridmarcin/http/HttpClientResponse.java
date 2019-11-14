@@ -12,7 +12,7 @@ class HttpClientResponse extends HttpMessage {
 
     public HttpClientResponse(InputStream inputStream) throws IOException {
         this.statusLine = readLine(inputStream);
-        headers= readHeaders(inputStream);
+        headers = readHeaders(inputStream);
 
         body = readBody(headers, inputStream);
     }
@@ -21,7 +21,7 @@ class HttpClientResponse extends HttpMessage {
         return Integer.parseInt(statusLine.split(" ")[1]);
     }
 
-    public Map<String, String> getHeaders() {
+    public Map<String, String> getHeader() {
         return headers;
     }
 
@@ -29,9 +29,11 @@ class HttpClientResponse extends HttpMessage {
         return headers.get(key);
     }
 
-    public int getContentLength() {
+    /*public int getContentLength() {
         return Integer.parseInt(getHeader("Content-Length"));
     }
+
+     */
 
     public String getBody() {
         return body;

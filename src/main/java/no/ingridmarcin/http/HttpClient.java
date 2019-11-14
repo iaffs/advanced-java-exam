@@ -25,8 +25,8 @@ public class HttpClient {
     // client-server architecture
     public HttpClientResponse executeRequest(final String httpMethod) throws IOException {
         try(Socket socket = new Socket(host, port)) {
-            if(body != null) {
-                setRequestHeader("Content-Length",String.valueOf(body.length()));
+            if (body != null) {
+                setRequestHeader("Content-Length", String.valueOf(body.length()));
             }
 
             String headerString = headers.entrySet().stream()
