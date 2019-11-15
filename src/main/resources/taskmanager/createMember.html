@@ -16,5 +16,18 @@
         </label>
         <button>Create</button>
     </form>
+    <form action=""><p id="members"></p></form>
+    <a href="index.html">Home</a>
+
+
 </body>
+<script>
+    fetch("/api/members")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("members").innerHTML = text;
+        });
+</script>
 </html>
