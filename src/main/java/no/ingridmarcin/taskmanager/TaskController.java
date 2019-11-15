@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TaskController implements HttpController {
+
     private TasksDao tasksDao;
 
     public TaskController(TasksDao tasksDao) {
@@ -18,7 +19,8 @@ public class TaskController implements HttpController {
 
     @Override
     public void handle(
-            String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream) throws IOException {
+            String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream)
+            throws IOException {
         try {
             if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
@@ -26,18 +28,19 @@ public class TaskController implements HttpController {
                 task.setTaskName(queryParameters.get("name"));
                 tasksDao.insert(task);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
-                        "Location: http://localhost:8080\r\n" +
+                        "Location: http://localhost:8080/createTask.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
             } else {
-                String status = "200";
-                String body = getBody();
-                outputStream.write(("HTTP/1.1 " + status + " OK\r\n" +
-                        "Content-Type: text/html\r\n" +
-                        "Content-Length: " + body.length() + "\r\n" +
-                        "Connection: close\r\n" +
-                        body).getBytes());
-                outputStream.flush();
+                    String status = "200";
+                    String body = getBody();
+                    outputStream.write(("HTTP/1.1 " + status + " OK\r\n" +
+                            "Content-Type: text/html\r\n" +
+                            "Content-Length: " + body.length() + "\r\n" +
+                            "Connection: close\r\n" +
+                            "\r\n" +
+                            body).getBytes());
+                    outputStream.flush();
             }
         } catch (SQLException e) {
             String message = e.toString();
@@ -53,7 +56,7 @@ public class TaskController implements HttpController {
 
         public String getBody() throws SQLException {
             return tasksDao.listAll().stream()
-                    .map(p -> String.format("<option id='%s'>%s. %s>/option>", p.getId(), p.getId(), p.getTaskName()))
+                    .map(p -> String.format("<option id='%s'>%s. %s</option>", p.getId(), p.getId(), p.getTaskName()))
                     .collect(Collectors.joining(""));
 
     }

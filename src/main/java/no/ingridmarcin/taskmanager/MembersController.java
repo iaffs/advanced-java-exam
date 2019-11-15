@@ -26,7 +26,7 @@ public class MembersController  implements HttpController {
                 member.setMail(queryParameters.get("mail"));
                 memberDao.insert(member);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
-                        "Location: http://localhost:8080\r\n" +
+                        "Location: http://localhost:8080/createMember.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
                 return;

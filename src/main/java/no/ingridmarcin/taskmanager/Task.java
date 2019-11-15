@@ -5,23 +5,24 @@ import java.util.Objects;
 
 public class Task {
     private long id;
-    private String taskName;
+    private String name;
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
+    public void setTaskName(String name) {
+        this.name = name;
     }
 
     public String getTaskName() {
-        return this.taskName;
+        return this.name;
     }
 
     public long getId() {
         return id;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -30,21 +31,18 @@ public class Task {
             return false;
 
         Task task = (Task) o;
-        return id == task.id &&
-                Objects.equals(id, task.id) &&
-                Objects.equals(taskName, task.taskName);
+        return id == task.id && Objects.equals(name, task.name);
     }
-
     @Override
     public int hashCode() {
-        return Objects.hash(id, taskName);
+        return Objects.hash(id, name);
     }
-
     @Override
     public String toString() {
         return "Task{" +
-                "id='" + id + '\'' +
-                ", taskName=" + taskName +
+                "name='" + name + '\'' +
+                ", id=" + id +
                 '}';
     }
+
 }

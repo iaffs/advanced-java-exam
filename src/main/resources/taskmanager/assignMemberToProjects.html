@@ -5,7 +5,7 @@
     <title>Assign Member To Project</title>
 </head>
 <body>
-    <select id="members"></select> <select id="projects"></select>
+    <select id="members"></select> <select id="projects"></select> <select id="tasks"></select>
 </body>
 <script>
     fetch("/api/members")
@@ -21,6 +21,13 @@
         })
         .then(function(text) {
             document.getElementById("projects").innerHTML = text;
+        });
+    fetch("/api/tasks")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("tasks").innerHTML = text;
         });
 
 </script>

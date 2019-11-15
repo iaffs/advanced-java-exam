@@ -21,6 +21,10 @@ public class TaskManager {
     // MAIN METHODS
 
     private static void mainMenuWindow(Scanner input) throws IOException, SQLException {
+        PGSimpleDataSource dataSource = getDataSource();
+        TasksDao tasksDao = new TasksDao(dataSource);
+        System.out.println(tasksDao.listAll());
+
         System.out.println("**********\n" +
                 "Main Menu \n" +
                 "**********\n"
