@@ -23,7 +23,7 @@ public class TaskController implements HttpController {
             if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 Task task = new Task();
-                task.setTaskName(queryParameters.get("taskName"));
+                task.setTaskName(queryParameters.get("name"));
                 tasksDao.insert(task);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                         "Location: http://localhost:8080\r\n" +
@@ -34,7 +34,7 @@ public class TaskController implements HttpController {
                 String body = getBody();
                 outputStream.write(("HTTP/1.1 " + status + " OK\r\n" +
                         "Content-Type: text/html\r\n" +
-                        "Conent-Length: " + body.length() + "\r\n" +
+                        "Content-Length: " + body.length() + "\r\n" +
                         "Connection: close\r\n" +
                         body).getBytes());
                 outputStream.flush();

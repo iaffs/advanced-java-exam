@@ -23,7 +23,7 @@ public class TasksDao extends AbstractDao<Task> {
     protected Task readObject(ResultSet rs) throws SQLException {
         Task task = new Task();
         task.setId(rs.getLong("id"));
-        task.setTaskName(rs.getString("taskName"));
+        task.setTaskName(rs.getString("name"));
         return task;
     }
 

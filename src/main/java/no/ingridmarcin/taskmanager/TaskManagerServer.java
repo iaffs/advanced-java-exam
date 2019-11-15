@@ -29,6 +29,7 @@ public class TaskManagerServer {
         server.setFileLocation("src/main/resources/taskmanager");
         server.addController("/api/projects", new ProjectsController(new ProjectDao(dataSource)));
         server.addController("/api/members", new MembersController(new MemberDao(dataSource)));
+        server.addController("/api/tasks", new TaskController(new TasksDao(dataSource)));
         server.startServer();
 
     }
