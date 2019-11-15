@@ -18,7 +18,9 @@ import java.util.stream.Collectors;
         }
 
         @Override
-        public void handle(String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream) throws IOException {
+        public void handle(
+                String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream
+        ) throws IOException {
 
             try {
                 if(requestAction.equals("POST")) {

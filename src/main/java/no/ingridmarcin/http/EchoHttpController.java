@@ -7,7 +7,10 @@ import java.util.Map;
 class EchoHttpController implements HttpController {
 
     @Override
-    public void handle(String requestAction, String path, Map<String, String> queryParameters, String body, OutputStream outputStream) throws IOException {
+    public void handle(
+            String requestAction, String path, Map<String, String> queryParameters, String body, OutputStream outputStream
+            ) throws IOException {
+
         if (requestAction.equals("POST")) {
             queryParameters = HttpServer.parseQueryString(body);
         }

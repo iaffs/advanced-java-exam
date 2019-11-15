@@ -143,9 +143,9 @@ public class TaskManager {
         properties.load(new FileReader("taskmanager.properties"));
 
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
-        dataSource.setUrl(properties.getProperty("dataSource.url"));
-        dataSource.setPassword(properties.getProperty("dataSource.password"));
         dataSource.setUser(properties.getProperty("dataSource.user"));
+        dataSource.setPassword(properties.getProperty("dataSource.password"));
+        dataSource.setUrl(properties.getProperty("dataSource.url"));
 
         Flyway.configure().dataSource(dataSource).load().migrate();
 

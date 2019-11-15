@@ -69,7 +69,7 @@ public class HttpServer {
     public static Map<String, String> parseQueryParameters(String requestTarget) {
         int questionPos = requestTarget.indexOf("?");
         if (questionPos > 0) {
-            String query = requestTarget.substring(questionPos+1);
+            String query = requestTarget.substring(questionPos + 1);
             return parseQueryString(query);
         }
         return new HashMap<>();
@@ -81,7 +81,7 @@ public class HttpServer {
 
             int equalsPos = parameter.indexOf("=");
             String paramName = parameter.substring(0, equalsPos);
-            String paramValue = parameter.substring(equalsPos+1);
+            String paramValue = parameter.substring(equalsPos + 1);
             parameters.put(paramName, paramValue);
         }
         return parameters;
