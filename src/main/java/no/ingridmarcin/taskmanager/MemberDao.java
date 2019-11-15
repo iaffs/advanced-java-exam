@@ -1,8 +1,4 @@
 package no.ingridmarcin.taskmanager;
-
-import no.ingridmarcin.taskmanager.AbstractDao;
-import no.ingridmarcin.taskmanager.Member;
-
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.*;

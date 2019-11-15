@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Member To Project</title>
+</head>
+<body>
+    <select id="members"></select> <select id="projects"></select>
+</body>
+<script>
+    fetch("/api/members")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("members").innerHTML = text;
+        });
+    fetch("/api/projects")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("projects").innerHTML = text;
+        });
+
+</script>
+</html>

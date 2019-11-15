@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-    public class ProjectsController implements HttpController {
+public class ProjectsController implements HttpController {
 
         private ProjectDao dao;
 
@@ -24,13 +24,12 @@ import java.util.stream.Collectors;
                 if(requestAction.equals("POST")) {
                     queryParameters = HttpServer.parseQueryString(requestBody);
                     Project project = new Project();
-                    project.setProjectName(queryParameters.get("name"));
+                    project.setProjectName(queryParameters.get("projectName"));
                     dao.insert(project);
                     outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
-                            "Location: http://localhost:8080\r\n" +
+                            "Location: http://localhost:8080/createProject.html\r\n" +
                             "Connection: close\r\n" +
                             "\r\n").getBytes());
-                    return;
                 }
                 else {
                     String status = "200";
@@ -56,10 +55,9 @@ import java.util.stream.Collectors;
         }
 
         public String getBody() throws SQLException {
-            String body = dao.listAll().stream()
-                    .map(p -> String.format("<option id='%s'>%s</option>", p.getId(), p.getName()))
+            return dao.listAll().stream()
+                    .map(p -> String.format("<option id='%s'>%s. %s</option>", p.getId(), p.getId(), p.getName()))
                     .collect(Collectors.joining(""));
-            return body;
         }
     }
 
