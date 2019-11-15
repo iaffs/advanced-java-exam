@@ -10,10 +10,15 @@
         <select id="projects" name="projects"></select>
         <select id="members" name="members"></select>
         <select id="tasks" name="tasks"></select>
+        <select id="status" name="status"></select>
         <button>Create</button>
     </form>
+
+    <p>Change status</p>
+    <input type="text" placeholder="Write ID"><select></select><button>OK</button>
+
     <h1>Assigned members</h1>
-    <form action=""><p id="memberToProject"><a href="" id="memberToProject"></a> </p></form>
+    <form action=""><p id="memberToProject"></p></form>
     <a href="index.html">Home</a>
 
 </body>
@@ -45,7 +50,6 @@
         })
         .then(function(text) {
             document.getElementById("memberToProject").innerHTML = text;
-
         });
 
 </script>
