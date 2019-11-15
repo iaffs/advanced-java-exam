@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+</head>
+<body>
+
+    <form action="api/tasks" method="post">
+        <label>
+            Task name:
+            <input type="text" name="taskName">
+        </label>
+        <button>Create</button>
+    </form>
+    <form action=""><p id="tasks"></p></form>
+    <a href="index.html">Home</a>
+</body>
+<script>
+    fetch("/api/tasks")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("tasks").innerHTML = text;
+        });
+</script>
+
+</html>
