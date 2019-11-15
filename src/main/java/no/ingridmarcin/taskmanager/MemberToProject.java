@@ -3,29 +3,51 @@ package no.ingridmarcin.taskmanager;
 import java.util.Objects;
 
 public class MemberToProject {
-    private long projectId;
-    private long memberId;
+    private long id;
+    private String memberName;
+    private String projectName;
+    private String taskName;
 
-    public long getProjectId() {
-        return projectId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setProjectId(long projectId) {
-        this.projectId = projectId;
+    public long getId() {
+        return id;
     }
 
-    public long getMemberId() {
-        return memberId;
+    public void setMemberName(String memberName){
+        this.memberName = memberName;
     }
 
-    public void setMemberId(long memberId) {
-        this.memberId = memberId;
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setProjectName(String projectName){
+        this.projectName = projectName;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
     @Override
     public String toString() {
-        return "ProjectID : + " + projectId
-                + "Name : " + memberId;
+        return "MemberToProject{" +
+                "projectName='" + projectName + '\'' +
+                "memberName='" + memberName + '\'' +
+                "tasks='" + taskName + '\'' +
+                ", id=" + id +
+                '}';
     }
 
     @Override
@@ -34,13 +56,16 @@ public class MemberToProject {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        MemberToProject that = (MemberToProject) o;
-        return projectId == that.projectId &&
-                memberId == that.memberId;
+        MemberToProject memberToProject = (MemberToProject) o;
+        return  id == memberToProject.id &&
+                Objects.equals(projectName, memberToProject.projectName) &&
+                Objects.equals(memberName, memberToProject.memberName) &&
+                Objects.equals(taskName, memberToProject.taskName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(projectId, memberId);
+        return Objects.hash(id, projectName, memberName, taskName);
     }
+
 }

@@ -61,7 +61,7 @@ public class TaskManager {
         int userChoice = Integer.parseInt(input.nextLine());
 
         if (userChoice == 1) {
-            assignNewProject(input, projectDao, memberToProjectDao, memberToProject, memberDao);
+            //assignNewProject(input, projectDao, memberToProjectDao, memberToProject, memberDao);
         } else if (userChoice == 2) {
             mainMenuWindow(input);
         }
@@ -190,7 +190,7 @@ public class TaskManager {
     }
 
 
-    private static void assignNewProject(Scanner input, ProjectDao projectDao, MemberToProjectDao memberToProjectDao,
+    /*private static void assignNewProject(Scanner input, ProjectDao projectDao, MemberToProjectDao memberToProjectDao,
                                          MemberToProject memberToProject, MemberDao memberDao) throws SQLException, IOException {
         printProjectsList(projectDao);
         System.out.println("Choose a project ID:");
@@ -222,6 +222,6 @@ public class TaskManager {
             }
         }
         assignMemberToProjectInterface(input);
-    }
+    } */
 }
 

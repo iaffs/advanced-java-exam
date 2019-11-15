@@ -9,27 +9,29 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class MembersController  implements HttpController {
-    private MemberDao memberDao;
+public class MemberToProjectController implements HttpController {
 
-    public MembersController(MemberDao memberDao){
-        this.memberDao = memberDao;
+    private MemberToProjectDao memberToProjectDao;
+
+    public MemberToProjectController(MemberToProjectDao memberToProjectDao) {
+        this.memberToProjectDao = memberToProjectDao;
     }
 
     @Override
     public void handle(String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream) throws IOException {
+
         try {
             if(requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
-                Member member = new Member();
-                member.setMemberName(queryParameters.get("memberName"));
-                member.setMail(queryParameters.get("mail"));
-                memberDao.insert(member);
+                MemberToProject memberToProject = new MemberToProject();
+                memberToProject.setProjectName(queryParameters.get("projects"));
+                memberToProject.setMemberName(queryParameters.get("members"));
+                memberToProject.setTaskName(queryParameters.get("tasks"));
+                memberToProjectDao.insert(memberToProject);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
-                        "Location: http://localhost:8080/createMember.html\r\n" +
+                        "Location: http://localhost:8080/assignMemberToProjects.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
-                return;
             }
             else {
                 String status = "200";
@@ -55,9 +57,8 @@ public class MembersController  implements HttpController {
     }
 
     public String getBody() throws SQLException {
-        String body = memberDao.listAll().stream()
-                .map(p -> String.format("<option id='%s'> %s </option>", p.getId(), p.getMemberName()))
+        return memberToProjectDao.listAll().stream()
+                .map(p -> String.format("<option id='%s'> %s %s %s</option>", p.getId(), p.getProjectName(), p.getMemberName(), p.getTaskName()))
                 .collect(Collectors.joining(""));
-        return body;
     }
 }

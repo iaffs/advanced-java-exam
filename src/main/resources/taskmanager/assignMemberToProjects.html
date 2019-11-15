@@ -5,7 +5,17 @@
     <title>Assign Member To Project</title>
 </head>
 <body>
-    <select id="members"></select> <select id="projects"></select> <select id="tasks"></select>
+
+    <form action="api/memberToProject" method="post">
+        <select id="projects" name="projects"></select>
+        <select id="members" name="members"></select>
+        <select id="tasks" name="tasks"></select>
+        <button>Create</button>
+    </form>
+    <h1>Assigned members</h1>
+    <form action=""><p id="memberToProject"><a href="" id="memberToProject"></a> </p></form>
+    <a href="index.html">Home</a>
+
 </body>
 <script>
     fetch("/api/members")
@@ -28,6 +38,14 @@
         })
         .then(function(text) {
             document.getElementById("tasks").innerHTML = text;
+        });
+    fetch("/api/memberToProject")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("memberToProject").innerHTML = text;
+
         });
 
 </script>
