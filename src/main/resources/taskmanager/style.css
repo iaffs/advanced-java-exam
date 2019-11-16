@@ -32,7 +32,6 @@ input[type=text] {
     color: white;
     font-family: "Verdana", Arial, sans-serif;
     display: inline-block;
-    box-sizing: border-box;
 }
 
 select {
