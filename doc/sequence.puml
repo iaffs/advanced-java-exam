@@ -1,17 +1,76 @@
 @startuml
 
-MemberToProject <-- Member
-MemberToProject <-- Project
+TaskManagerServer <-- AbstractDao
+TaskManagerServer <-- MemberDao
+TaskManagerServer <-- MemberToProjectDao
+TaskManagerServer <-- ProjectDao
+TaskManagerServer <-- StatusDao
+TaskManagerServer <-- TasksDao
 
-+class Member {
+
++class TaskManagerServer {
++main()
+----
++Id
++MemberName
++ProjectName
++TaskName
++StatusName
 }
 
-+class MemberToProject {
+
++abstract class AbstractDao {
++{abstract} AbstractDao()
++{abstract} void insertObject()
++insert()
++ void update()
++List<T> ListAll()
++ListToString()
 }
 
-+class Project {
++class MemberDao {
++ void insertObject()
++MemberDao()
+#Member readObject()
++ insert()
++List<T> ListAll()
++Member retrieve()
++ listToString()
 }
 
-+class TaskManager {
++class MemberToProjectDao {
++ MemberToProjectDao()
++ void insertObject()
+# MemberToProject readObject()
++ insert()
++ void insert()
++List<T> ListAll()
++ listToString()
+}
+
++class ProjectDao {
++ ProjectDao()
++ void insertObject()
+# Project readObject()
++List<T> ListAll()
++List<> listSelectedProjects()
++ Project retrieve()
++ listToString()
+}
+
++class TasksDao {
++ TasksDao()
++ void insertObject()
+# Task readObject()
++ insert()
+
+}
+
++class StatusDao {
++ StatusDao()
++ void insertObject()
+# Status readObject()
++ insert()
++ List<T> ListAll()
 }
 @enduml
