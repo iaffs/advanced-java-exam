@@ -17,15 +17,19 @@
 
         <p>Change status</p>
 
-        <input type="text" placeholder="Write status"><select></select><button class="button">OK</button>
-
         <form action="api/statusChange" method="post">
-            <input type="text" placeholder="Write ID" id="statusChange" name="fetchId" ><select></select>
-            <button class="button">OK</button>
+            <input type="text" placeholder="Write ID of the task you want to change" id="statusChange" name="fetchId" >
+            <select id="statusChanges" name="status"></select><button class="button">OK</button>
         </form>
 
+
+
+
+
         <h1>Assigned members</h1>
-        <form action=""><p id="memberToProject"></p></form>
+        <form action="">
+            <p id="memberToProject"></p>
+        </form>
         <a href="index.html" class="home">Home</a>
     </div>
 </body>
@@ -50,6 +54,20 @@
         })
         .then(function(text) {
             document.getElementById("tasks").innerHTML = text;
+        });
+    fetch("/api/status")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("status").innerHTML = text;
+        });
+    fetch("/api/status")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("statusChanges").innerHTML = text;
         });
     fetch("/api/memberToProject")
         .then(function(result) {

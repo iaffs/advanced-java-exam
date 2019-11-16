@@ -19,6 +19,7 @@ public class MemberToProjectDao extends AbstractDao<MemberToProject> {
         statement.setString(1, memberToProject.getProjectName());
         statement.setString(2, memberToProject.getMemberName());
         statement.setString(3, memberToProject.getTaskName());
+        statement.setString(4, memberToProject.getStatusName());
     }
 
     @Override
@@ -28,16 +29,25 @@ public class MemberToProjectDao extends AbstractDao<MemberToProject> {
         memberToProject.setProjectName(rs.getString("project_name"));
         memberToProject.setMemberName(rs.getString("member_name"));
         memberToProject.setTaskName(rs.getString("task_name"));
+        memberToProject.setStatusName(rs.getString("status_name"));
         return memberToProject;
     }
 
     public long insert(MemberToProject memberToProject) throws SQLException {
         return insert(memberToProject,
-                "insert into member_to_project (project_name, member_name, task_name) values (?, ?, ?)"
+                "insert into member_to_project (project_name, member_name, task_name, status_name) values (?, ?, ?, ?)"
         );
     }
 
+    public void update(String status, long id) throws SQLException {
+         update(
+                "update member_to_project set status_name = ? where id=?"
+                , status, id);
+    }
+
+
     //we had to use seperate method different than insert from AbstractDao,  cause we didnt have automatic primary key in member_to_project table
+
     /*public void insertMemberToProject(MemberToProject memberToProject) throws SQLException {
         try (Connection conn = dataSource.getConnection()) {
             try (PreparedStatement statement = conn.prepareStatement(

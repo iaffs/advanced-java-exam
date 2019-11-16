@@ -7,6 +7,16 @@ public class MemberToProject {
     private String memberName;
     private String projectName;
     private String taskName;
+    private String statusName;
+
+
+    public String getStatusName() {
+        return statusName;
+    }
+
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
+    }
 
     public void setId(long id) {
         this.id = id;
@@ -46,6 +56,7 @@ public class MemberToProject {
                 "projectName='" + projectName + '\'' +
                 "memberName='" + memberName + '\'' +
                 "tasks='" + taskName + '\'' +
+                "status='" + statusName + '\'' +
                 ", id=" + id +
                 '}';
     }
@@ -60,12 +71,14 @@ public class MemberToProject {
         return  id == memberToProject.id &&
                 Objects.equals(projectName, memberToProject.projectName) &&
                 Objects.equals(memberName, memberToProject.memberName) &&
-                Objects.equals(taskName, memberToProject.taskName);
+                Objects.equals(taskName, memberToProject.taskName) &&
+                Objects.equals(statusName, memberToProject.statusName);
+
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, projectName, memberName, taskName);
+        return Objects.hash(id, projectName, memberName, taskName, statusName);
     }
 
 }

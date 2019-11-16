@@ -30,6 +30,7 @@ public class TaskManagerServer {
         server.addController("/api/projects", new ProjectsController(new ProjectDao(dataSource)));
         server.addController("/api/members", new MembersController(new MemberDao(dataSource)));
         server.addController("/api/tasks", new TaskController(new TasksDao(dataSource)));
+        server.addController("/api/status", new StatusController(new StatusDao(dataSource)));
         server.addController("/api/memberToProject", new MemberToProjectController(new MemberToProjectDao(dataSource)));
         server.addController("/api/statusChange", new MemberToProjectController(new MemberToProjectDao(dataSource)));
         server.startServer();

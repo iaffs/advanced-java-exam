@@ -24,8 +24,9 @@ public class MemberToProjectController implements HttpController {
             if(requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 System.out.println(requestBody);
-                if(requestBody.contains("fetchID")) {
-                    System.out.println("fuck you");
+                // kinda risky but lets assume no one uses 'fetchID' as a name or email
+                if(requestBody.contains("fetch")) {
+                    updateStatus(queryParameters);
                 } else {
                     executeAssignment(queryParameters);
                 }
@@ -57,17 +58,28 @@ public class MemberToProjectController implements HttpController {
 
     }
 
+    /* OK so i need to return id which will be an id i need to assign to the row! */
+
     public void executeAssignment(Map<String, String> queryParameters) throws SQLException {
         MemberToProject memberToProject = new MemberToProject();
         memberToProject.setProjectName(queryParameters.get("projects"));
         memberToProject.setMemberName(queryParameters.get("members"));
         memberToProject.setTaskName(queryParameters.get("tasks"));
+        memberToProject.setStatusName(queryParameters.get("status"));
         memberToProjectDao.insert(memberToProject);
     }
 
+    public void updateStatus(Map<String, String> queryParameters) throws SQLException {
+        String status = queryParameters.get("status");
+        String id = queryParameters.get("fetchId");
+        long idToLong = Long.parseLong(id);
+        memberToProjectDao.update(status, idToLong);
+    }
+
+
     public String getBody() throws SQLException {
         return memberToProjectDao.listAll().stream()
-                .map(p -> String.format("<option id='%s'> %s %s %s</option>", p.getId(), p.getProjectName(), p.getMemberName(), p.getTaskName()))
+                .map(p -> String.format("<option id='%s'>%s. %s %s %s %s</option>", p.getId(), p.getId(), p.getProjectName(), p.getMemberName(), p.getTaskName(), p.getStatusName()))
                 .collect(Collectors.joining(""));
     }
 }
