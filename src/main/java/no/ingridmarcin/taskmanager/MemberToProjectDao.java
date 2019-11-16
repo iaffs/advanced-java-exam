@@ -61,7 +61,7 @@ public class MemberToProjectDao extends AbstractDao<MemberToProject> {
 
     public List<MemberToProject> listAll() throws SQLException {
         return listAll(
-                "select * from member_to_project"
+                "select * from member_to_project order by id asc"
         );
     }
 
