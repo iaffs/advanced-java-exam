@@ -15,7 +15,13 @@
     </form>
 
     <p>Change status</p>
+
     <input type="text" placeholder="Write status"><select></select><button>OK</button>
+=======
+    <form action="api/statusChange" method="post">
+        <input type="text" placeholder="Write ID" id="statusChange" name="fetchId" ><select></select>
+        <button>OK</button>
+    </form>
 
     <h1>Assigned members</h1>
     <form action=""><p id="memberToProject"></p></form>
@@ -50,6 +56,13 @@
         })
         .then(function(text) {
             document.getElementById("memberToProject").innerHTML = text;
+        });
+        fetch("/api/statusChange")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("statusChange").innerHTML = text;
         });
 
 </script>

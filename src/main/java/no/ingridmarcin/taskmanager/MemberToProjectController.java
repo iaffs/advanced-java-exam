@@ -23,11 +23,12 @@ public class MemberToProjectController implements HttpController {
         try {
             if(requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
-                MemberToProject memberToProject = new MemberToProject();
-                memberToProject.setProjectName(queryParameters.get("projects"));
-                memberToProject.setMemberName(queryParameters.get("members"));
-                memberToProject.setTaskName(queryParameters.get("tasks"));
-                memberToProjectDao.insert(memberToProject);
+                System.out.println(requestBody);
+                if(requestBody.contains("fetchID")) {
+                    System.out.println("fuck you");
+                } else {
+                    executeAssignment(queryParameters);
+                }
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                         "Location: http://localhost:8080/assignMemberToProjects.html\r\n" +
                         "Connection: close\r\n" +
@@ -54,6 +55,14 @@ public class MemberToProjectController implements HttpController {
                     message).getBytes());
         }
 
+    }
+
+    public void executeAssignment(Map<String, String> queryParameters) throws SQLException {
+        MemberToProject memberToProject = new MemberToProject();
+        memberToProject.setProjectName(queryParameters.get("projects"));
+        memberToProject.setMemberName(queryParameters.get("members"));
+        memberToProject.setTaskName(queryParameters.get("tasks"));
+        memberToProjectDao.insert(memberToProject);
     }
 
     public String getBody() throws SQLException {
