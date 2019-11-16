@@ -45,19 +45,11 @@ public class MemberToProjectDao extends AbstractDao<MemberToProject> {
                 , status, id);
     }
 
-
-    //we had to use seperate method different than insert from AbstractDao,  cause we didnt have automatic primary key in member_to_project table
-
-    /*public void insertMemberToProject(MemberToProject memberToProject) throws SQLException {
-        try (Connection conn = dataSource.getConnection()) {
-            try (PreparedStatement statement = conn.prepareStatement(
-                    "insert into member_to_project (project_name, member_name) values (?, ?)"
-                )) {
-                insertObject(memberToProject, statement);
-                statement.executeUpdate();
-            }
-        }
-    } */
+    public List<MemberToProject> filter(String name) throws SQLException {
+        return filter(
+                "select * from member_to_project where member_name =? order by id asc",
+                name);
+    }
 
     public List<MemberToProject> listAll() throws SQLException {
         return listAll(

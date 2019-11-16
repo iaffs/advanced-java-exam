@@ -42,6 +42,26 @@ public abstract class AbstractDao<T> {
         }
     }
 
+    // used only to filter members
+    public List<T> filter(String sql, String name) throws SQLException {
+        try (Connection conn = dataSource.getConnection()) {
+            try (PreparedStatement statement = conn.prepareStatement(sql)) {
+                statement.setString(1,name);
+                statement.executeQuery();
+                try (ResultSet rs = statement.executeQuery()) {
+                    List<T> result = new ArrayList<>();
+
+                    while (rs.next()) {
+                        result.add(readObject(rs));
+                    }
+                    return result;
+                }
+            }
+        }
+    }
+
+
+
     public List<T> listAll(String sql) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {

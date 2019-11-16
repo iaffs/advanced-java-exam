@@ -8,4 +8,5 @@ public interface HttpController {
     void handle(
             String requestPath, String path, Map<String, String> queryParameters, String body, OutputStream outputStream
     ) throws IOException;
+
 }

@@ -39,7 +39,6 @@ public class TaskController implements HttpController {
                             "Connection: close\r\n" +
                             "\r\n" +
                             body).getBytes());
-                    outputStream.flush();
             }
         } catch (SQLException e) {
             String message = e.toString();
