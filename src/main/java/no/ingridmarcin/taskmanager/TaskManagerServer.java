@@ -33,6 +33,7 @@ public class TaskManagerServer {
         server.addController("/api/status", new StatusController(new StatusDao(dataSource)));
         server.addController("/api/memberToProject", new MemberToProjectController(new MemberToProjectDao(dataSource)));
         server.addController("/api/statusChange", new MemberToProjectController(new MemberToProjectDao(dataSource)));
+        server.addController("/api/filterMember", new MemberToProjectController(new MemberToProjectDao(dataSource)));
         server.startServer();
 
     }
