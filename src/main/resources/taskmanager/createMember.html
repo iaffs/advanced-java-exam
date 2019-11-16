@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="api/members" method="post">
-        <label>
-            Member name:
-            <input type="text" name="memberName">
-        </label>
-        <label>
-            Member mail:
-            <input type="text" name="mail">
-        </label>
-        <button>Create</button>
-    </form>
-    <form action=""><p id="members"></p></form>
-    <a href="index.html">Home</a>
-
-
+    <div class="middle">
+        <form action="api/members" method="post">
+            <label>
+                Member name:
+                <input type="text" name="memberName">
+            </label>
+            <label>
+                Member mail:
+                <input type="text" name="mail">
+            </label>
+            <button class="button">Create</button>
+        </form>
+        <form action=""><p id="members"></p></form>
+        <a href="index.html" class="home">Home</a>
+    </div>
 </body>
 <script>
     fetch("/api/members")

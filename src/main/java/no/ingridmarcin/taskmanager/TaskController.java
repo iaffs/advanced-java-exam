@@ -19,8 +19,7 @@ public class TaskController implements HttpController {
 
     @Override
     public void handle(
-            String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream)
-            throws IOException {
+            String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream) throws IOException {
         try {
             if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);

@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Assign Member To Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="middle">
+        <form action="api/memberToProject" method="post">
+            <select id="projects" name="projects"></select>
+            <select id="members" name="members"></select>
+            <select id="tasks" name="tasks"></select>
+            <select id="status" name="status"></select>
+            <button class="button">Create</button>
+        </form>
 
-    <form action="api/memberToProject" method="post">
-        <select id="projects" name="projects"></select>
-        <select id="members" name="members"></select>
-        <select id="tasks" name="tasks"></select>
-        <select id="status" name="status"></select>
-        <button>Create</button>
-    </form>
+        <p>Change status</p>
 
-    <p>Change status</p>
+        <input type="text" placeholder="Write status"><select></select><button class="button">OK</button>
 
-    <input type="text" placeholder="Write status"><select></select><button>OK</button>
-=======
-    <form action="api/statusChange" method="post">
-        <input type="text" placeholder="Write ID" id="statusChange" name="fetchId" ><select></select>
-        <button>OK</button>
-    </form>
+        <form action="api/statusChange" method="post">
+            <input type="text" placeholder="Write ID" id="statusChange" name="fetchId" ><select></select>
+            <button class="button">OK</button>
+        </form>
 
-    <h1>Assigned members</h1>
-    <form action=""><p id="memberToProject"></p></form>
-    <a href="index.html">Home</a>
-
+        <h1>Assigned members</h1>
+        <form action=""><p id="memberToProject"></p></form>
+        <a href="index.html" class="home">Home</a>
+    </div>
 </body>
 <script>
     fetch("/api/members")

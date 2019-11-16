@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <form action="api/projects" method="post">
-        <label>
-            Project name:
-            <input type="text" name="projectName">
-        </label>
-        <button>Create</button>
-    </form>
-    <form action=""><p id="projects"> </p></form>
-    <a href="index.html">Home</a>
+    <div>
+        <div>
+            <form action="api/projects" method="post">
+                <label>
+                    Project name:
+                    <input type="text" name="projectName">
+                </label>
+                <button class="button">Create</button>
+            </form>
+            <form action=""><p id="projects"> </p></form>
+            <a href="index.html" class="home">Home</a>
+        </div>
+    </div>
 </body>
 <script>
     fetch("/api/projects")
