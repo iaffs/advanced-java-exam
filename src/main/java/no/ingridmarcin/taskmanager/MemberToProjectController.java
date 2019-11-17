@@ -28,10 +28,6 @@ public class MemberToProjectController implements HttpController {
                 // kinda risky but lets assume no one uses 'fetch' as a name or email
                 if (requestBody.contains("fetch")) {
                     updateStatus(queryParameters);
-                    this.option = 0;
-                } else if (requestBody.contains("filter")) {
-                   this.option = 1;
-                   filterMember(queryParameters);
                 } else {
                     executeAssignment(queryParameters);
                 }
