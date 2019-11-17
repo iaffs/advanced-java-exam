@@ -24,8 +24,6 @@ TaskManagerServer <-- TasksDao
 +{abstract} void insertObject()
 +insert()
 + void update()
-+List<T> ListAll()
-+ListToString()
 }
 
 +class MemberDao {

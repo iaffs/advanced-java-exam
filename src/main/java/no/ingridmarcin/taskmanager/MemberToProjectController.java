@@ -33,8 +33,7 @@ public class MemberToProjectController implements HttpController {
                 } else if (requestBody.contains("filter")) {
                    this.option = 1;
                    filterMember(queryParameters);
-                }
-                else {
+                } else {
                     executeAssignment(queryParameters);
                     this.option = 0;
                 }
@@ -42,8 +41,7 @@ public class MemberToProjectController implements HttpController {
                         "Location: http://localhost:8080/assignMemberToProjects.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
-            }
-            else {
+            } else {
                 String status = "200";
                 String body = getBody();
                 outputStream.write(("HTTP/1.1 " + status + " OK\r\n" +
