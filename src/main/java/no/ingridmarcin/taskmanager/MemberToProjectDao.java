@@ -56,18 +56,4 @@ public class MemberToProjectDao extends AbstractDao<MemberToProject> {
                 "select * from member_to_project order by id asc"
         );
     }
-
-    public List<MemberToProject> selectUnique(String project_name, long member_name) throws SQLException {
-        return listAll(
-                "select * from member_to_project where project_name = " + project_name
-                        + " and member_name = " + member_name
-        );
-    }
-
-    public String listToString(List <MemberToProject> memberToProject) {
-        return Arrays.toString((memberToProject).toArray())
-                .replace("[", " ")
-                .replace("]", "")
-                .replace(",", "");
-    }
 }

@@ -44,12 +44,6 @@ public class ProjectDao extends AbstractDao<Project> {
         );
     }
 
-    public List<Project> listSelectedProjects(long id) throws SQLException {
-        return listAll(
-                "select * from projects where id=" + id
-        );
-    }
-
     public Project retrieve(long id) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement("select * from projects where id= ?")) {
@@ -63,13 +57,6 @@ public class ProjectDao extends AbstractDao<Project> {
                 }
             }
         }
-    }
-
-    public String listToString(List <Project> project) {
-        return Arrays.toString((project).toArray())
-                .replace("[", " ")
-                .replace("]", "")
-                .replace(",", "");
     }
 
 }
