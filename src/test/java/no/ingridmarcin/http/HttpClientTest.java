@@ -11,9 +11,7 @@ public class HttpClientTest {
         HttpClient client = new HttpClient("urlecho.appspot.com" ,80,"/echo");
         HttpClientResponse response = client.executeRequest("GET");
         assertEquals(200, response.getStatusCode());
-
     }
-
 
     @Test
     void shouldReadFailureStatusCode() throws IOException {

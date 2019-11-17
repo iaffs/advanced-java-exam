@@ -27,8 +27,6 @@ public class MemberControllerTest {
                 .contains("<option id='" + member.getId() + "'> " + member.getMemberName() + " </option>");
     }
 
-
-
     @Test
     void shouldCreateNewMember() throws IOException, SQLException {
         MemberDao memberDao = new MemberDao(dataSource);

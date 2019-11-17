@@ -22,4 +22,13 @@
         </div>
     </div>
 </body>
+<script>
+    fetch("/api/status")
+        .then(function(result) {
+            return result.text();
+        })
+        .then(function(text) {
+            document.getElementById("status").innerHTML = text;
+        });
+</script>
 </html>

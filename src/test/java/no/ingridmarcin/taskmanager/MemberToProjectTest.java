@@ -12,12 +12,11 @@ public class MemberToProjectTest {
 
     @Test
     void shouldFilterByName() throws SQLException {
+        MemberToProject memberToProject = simpleAssignment();
+        MemberToProjectDao memberToProjectDao = new MemberToProjectDao(dataSource);
+        memberToProjectDao.insert(memberToProject);
 
-    MemberToProject memberToProject = simpleAssignment();
-    MemberToProjectDao memberToProjectDao = new MemberToProjectDao(dataSource);
-    memberToProjectDao.insert(memberToProject);
-
-    assertThat(memberToProjectDao.filter("Joseph")).contains(memberToProject);
+        assertThat(memberToProjectDao.filter("Joseph")).contains(memberToProject);
     }
 
     @Test
@@ -25,8 +24,8 @@ public class MemberToProjectTest {
         MemberToProject memberToProject = simpleAssignment();
         MemberToProjectDao memberToProjectDao = new MemberToProjectDao(dataSource);
         memberToProjectDao.insert(memberToProject);
-
         memberToProjectDao.update("done",1);
+
         assertThat(memberToProjectDao.listAll())
                 .extracting(MemberToProject::getStatusName)
                 .contains("done");

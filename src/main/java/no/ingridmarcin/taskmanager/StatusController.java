@@ -25,12 +25,12 @@ public class StatusController implements HttpController {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 Status status = new Status();
 
-                String statusName = java.net.URLDecoder.decode(queryParameters.get("statusName"), StandardCharsets.UTF_8);
+                String statusName = java.net.URLDecoder.decode(queryParameters.get("name"), StandardCharsets.UTF_8);
 
                 status.setStatusName(statusName);
                 statusDao.insert(status);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
-                        "Location: http://localhost:8080/createStatus.html\r\n" +
+                        "Location: http://localhost:8080/status.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
             } else {

@@ -47,7 +47,6 @@ public class HttpServerTest {
         assertThat(response.getBody()).isEqualTo("foobar");
     }
 
-
     @Test
     void shouldReturnFileFromDisk() throws IOException {
         server.setFileLocation("target");
