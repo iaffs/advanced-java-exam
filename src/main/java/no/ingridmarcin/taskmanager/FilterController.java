@@ -10,11 +10,12 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class MembersController  implements HttpController {
-    private MemberDao memberDao;
+public class FilterController implements HttpController {
 
-    public MembersController(MemberDao memberDao){
-        this.memberDao = memberDao;
+    private MemberToProjectDao memberToProjectDao;
+    private String memberName;
+    public FilterController(MemberToProjectDao memberToProjectDao) {
+        this.memberToProjectDao = memberToProjectDao;
     }
 
     @Override
@@ -22,16 +23,11 @@ public class MembersController  implements HttpController {
         try {
             if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
-                Member member = new Member();
+                memberName = java.net.URLDecoder.decode(queryParameters.get("filterMember"),StandardCharsets.UTF_8);
+                memberToProjectDao.filter(memberName);
 
-                String memberName = java.net.URLDecoder.decode(queryParameters.get("memberName"), StandardCharsets.UTF_8);
-                String mail = java.net.URLDecoder.decode(queryParameters.get("mail"), StandardCharsets.UTF_8);
-
-                member.setMemberName(memberName);
-                member.setMail(mail);
-                memberDao.insert(member);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
-                        "Location: http://localhost:8080/createMember.html\r\n" +
+                        "Location: http://localhost:8080/filter.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
             } else {
@@ -58,8 +54,8 @@ public class MembersController  implements HttpController {
     }
 
     public String getBody() throws SQLException {
-        String body = memberDao.listAll().stream()
-                .map(p -> String.format("<option id='%s'> %s </option>", p.getId(), p.getMemberName()))
+        String body = memberToProjectDao.filter(this.memberName).stream()
+                .map(p -> String.format("<option id='%s'> %s %s </option>", p.getId(), p.getMemberName(), p.getTaskName()))
                 .collect(Collectors.joining(""));
         return body;
     }
