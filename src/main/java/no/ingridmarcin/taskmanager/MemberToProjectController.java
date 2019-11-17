@@ -13,8 +13,7 @@ import java.util.stream.Collectors;
 public class MemberToProjectController implements HttpController {
 
     private MemberToProjectDao memberToProjectDao;
-    private int option = 0;
-    private String memberName;
+
 
     public MemberToProjectController(MemberToProjectDao memberToProjectDao) {
         this.memberToProjectDao = memberToProjectDao;
@@ -35,7 +34,6 @@ public class MemberToProjectController implements HttpController {
                    filterMember(queryParameters);
                 } else {
                     executeAssignment(queryParameters);
-                    this.option = 0;
                 }
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                         "Location: http://localhost:8080/assignMemberToProjects.html\r\n" +
@@ -83,22 +81,22 @@ public class MemberToProjectController implements HttpController {
         memberToProjectDao.update(status, idToLong);
     }
 
-    public void filterMember(Map<String, String> queryParameters) throws SQLException {
+    /*public void filterMember(Map<String, String> queryParameters) throws SQLException {
         memberName = queryParameters.get("filterMember");
         //memberToProjectDao.filter(memberName);
-    }
+    } */
 
 
 
     public String getBody() throws SQLException {
-        if (this.option==0) {
+
             return memberToProjectDao.listAll().stream()
                     .map(p -> String.format("<option id='%s'>%s. %s %s %s %s</option>", p.getId(), p.getId(), p.getProjectName(), p.getMemberName(), p.getTaskName(), p.getStatusName()))
                     .collect(Collectors.joining(""));
-        } else {
+        /*else {
             return memberToProjectDao.filter(memberName).stream()
                     .map(p -> String.format("<option id='%s'>%s. %s %s %s %s</option>", p.getId(), p.getId(), p.getProjectName(), p.getMemberName(), p.getTaskName(), p.getStatusName()))
                     .collect(Collectors.joining(""));
-        }
+        } */
     }
 }

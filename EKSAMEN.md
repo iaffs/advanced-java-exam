@@ -163,8 +163,8 @@ body {
 * [ ] Avansert funksjonalitet (redigering av prosjektmedlemmer, statuskategorier, prosjekter)
 * [ ] Implementasjon av cookies for å konstruere sesjoner
 * [ ] UML diagram som dokumenterer datamodell og/eller arkitektur (presentert i README.md)
-* [ ] Rammeverk rundt Http-håndtering (en god HttpMessage class med HttpRequest og HttpResponse subtyper) som gjenspeiler RFC7230
+* [x] Rammeverk rundt Http-håndtering (en god HttpMessage class med HttpRequest og HttpResponse subtyper) som gjenspeiler RFC7230
 * [x] Korrekt håndtering av norske tegn i HTTP
-* [ ] God bruk av DAO-pattern
+* [x] God bruk av DAO-pattern
 * [x] Link til video med god demonstrasjon av ping-pong programmering
 * [ ] Annet
