@@ -20,14 +20,14 @@ public class MemberDao extends AbstractDao<Member> {
     protected Member readObject(ResultSet rs) throws SQLException {
         Member member = new Member();
         member.setId(rs.getLong("id"));
-        member.setMemberName(rs.getString("member_name"));
+        member.setMemberName(rs.getString("name"));
         member.setMail(rs.getString("email"));
         return member;
     }
 
     public long insert(Member member) throws SQLException {
          return insert(member,
-                 "insert into members (member_name, email) values (?, ?)"
+                 "insert into members (name, email) values (?, ?)"
          );
     }
 

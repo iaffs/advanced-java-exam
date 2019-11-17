@@ -31,7 +31,7 @@ public class MemberControllerTest {
     void shouldCreateNewMember() throws IOException, SQLException {
         MemberDao memberDao = new MemberDao(dataSource);
         MembersController controller = new MembersController(memberDao);
-        String requestBody = "memberName=Joseph&mail=kutasiarz";
+        String requestBody = "name=Joseph&mail=kutasiarz";
         controller.handle("POST", "api/members", null, requestBody, new ByteArrayOutputStream());
 
         assertThat(memberDao.listAll())

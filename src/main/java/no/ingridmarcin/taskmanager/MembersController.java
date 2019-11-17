@@ -24,7 +24,7 @@ public class MembersController  implements HttpController {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 Member member = new Member();
 
-                String memberName = java.net.URLDecoder.decode(queryParameters.get("memberName"), StandardCharsets.UTF_8);
+                String memberName = java.net.URLDecoder.decode(queryParameters.get("name"), StandardCharsets.UTF_8);
                 String mail = java.net.URLDecoder.decode(queryParameters.get("mail"), StandardCharsets.UTF_8);
 
                 member.setMemberName(memberName);
