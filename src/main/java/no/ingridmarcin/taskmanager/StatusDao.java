@@ -1,6 +1,7 @@
 package no.ingridmarcin.taskmanager;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,5 +36,20 @@ public class StatusDao extends AbstractDao<Status> {
         return listAll(
                 "select * from status"
         );
+    }
+
+    public Status retrieve(long id) throws SQLException {
+        try (Connection connection = dataSource.getConnection()) {
+            try (PreparedStatement statement = connection.prepareStatement("select * from status where id= ?")) {
+                statement.setLong(1, id);
+                try (ResultSet rs = statement.executeQuery()) {
+                    if (rs.next()) {
+                        return readObject(rs);
+                    } else {
+                        return null;
+                    }
+                }
+            }
+        }
     }
 }

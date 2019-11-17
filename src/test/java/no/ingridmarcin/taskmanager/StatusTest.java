@@ -13,28 +13,28 @@ public class StatusTest {
 
     @Test
     void shouldFindStoredStatus() throws SQLException {
-        ProjectDao projectDao = new ProjectDao(dataSource);
-        Project project = sampleProject();
-        long id = projectDao.insert(project);
-        project.setId(id);
-        assertThat(projectDao.listAll()).contains(project);
+        StatusDao statusDao = new StatusDao(dataSource);
+        Status status = sampleProject();
+        long id = statusDao.insert(status);
+        status.setId(id);
+        assertThat(statusDao.listAll()).contains(status);
     }
 
     @Test
-    void shouldSaveAllProjectFields() throws SQLException {
-        ProjectDao projectDao = new ProjectDao(dataSource);
-        Project project = sampleProject();
-        long id = projectDao.insert(project);
-        project.setId(id);
-        assertThat(project).hasNoNullFieldsOrProperties();
-        assertThat(projectDao.retrieve(id))
-                .isEqualToComparingFieldByField(project);
+    void shouldSaveAllStatusFields() throws SQLException {
+        StatusDao statusDao = new StatusDao(dataSource);
+        Status status = sampleProject();
+        long id = statusDao.insert(status);
+        status.setId(id);
+        assertThat(status).hasNoNullFieldsOrProperties();
+        assertThat(statusDao.retrieve(id))
+                .isEqualToComparingFieldByField(status);
     }
 
-    private Project sampleProject() {
-        Project project = new Project();
-        String projectName = "Java Project";
-        project.setProjectName(projectName);
-        return project;
+    private Status sampleProject() {
+        Status status = new Status();
+        String statusName = "To do";
+        status.setStatusName(statusName);
+        return status;
     }
 }
