@@ -31,7 +31,6 @@ public class ProjectsController implements HttpController {
                     String projectName = java.net.URLDecoder.decode(queryParameters.get("projectName"), StandardCharsets.UTF_8);
 
                     project.setProjectName(projectName);
-
                     dao.insert(project);
                     outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                             "Location: http://localhost:8080/createProject.html\r\n" +

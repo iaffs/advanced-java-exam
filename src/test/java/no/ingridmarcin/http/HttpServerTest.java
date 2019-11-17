@@ -49,7 +49,7 @@ public class HttpServerTest {
 
 
     @Test
-    void shouldFileFromDisk() throws IOException {
+    void shouldReturnFileFromDisk() throws IOException {
         server.setFileLocation("target");
         String fileContent = "Hello Kristiania " + System.currentTimeMillis();
         Files.writeString(Paths.get("target","somefile.txt"), fileContent);

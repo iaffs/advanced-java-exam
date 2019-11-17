@@ -54,9 +54,8 @@ public class FilterController implements HttpController {
     }
 
     public String getBody() throws SQLException {
-        String body = memberToProjectDao.filter(this.memberName).stream()
+        return memberToProjectDao.filter(this.memberName).stream()
                 .map(p -> String.format("<option id='%s'> %s %s </option>", p.getId(), p.getMemberName(), p.getTaskName()))
                 .collect(Collectors.joining(""));
-        return body;
     }
 }

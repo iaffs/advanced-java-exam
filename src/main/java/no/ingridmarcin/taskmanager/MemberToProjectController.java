@@ -14,7 +14,6 @@ public class MemberToProjectController implements HttpController {
 
     private MemberToProjectDao memberToProjectDao;
 
-
     public MemberToProjectController(MemberToProjectDao memberToProjectDao) {
         this.memberToProjectDao = memberToProjectDao;
     }
@@ -58,9 +57,8 @@ public class MemberToProjectController implements HttpController {
 
     }
 
-    /* OK so i need to return id which will be an id i need to assign to the row! */
-
-    public void executeAssignment(Map<String, String> queryParameters) throws SQLException {
+    //insert data into memberToProject table
+    private void executeAssignment(Map<String, String> queryParameters) throws SQLException {
         MemberToProject memberToProject = new MemberToProject();
 
         String projects = java.net.URLDecoder.decode(queryParameters.get("projects"), StandardCharsets.UTF_8);
@@ -76,29 +74,18 @@ public class MemberToProjectController implements HttpController {
         System.out.println();
     }
 
-    public void updateStatus(Map<String, String> queryParameters) throws SQLException {
-        String status = queryParameters.get("status");
+    //updates status in memberToProject table
+    private void updateStatus(Map<String, String> queryParameters) throws SQLException {
+        String status = java.net.URLDecoder.decode(queryParameters.get("status"),StandardCharsets.UTF_8);
         String id = queryParameters.get("fetchId");
         long idToLong = Long.parseLong(id);
         memberToProjectDao.update(status, idToLong);
     }
 
-    /*public void filterMember(Map<String, String> queryParameters) throws SQLException {
-        memberName = queryParameters.get("filterMember");
-        //memberToProjectDao.filter(memberName);
-    } */
-
-
-
     public String getBody() throws SQLException {
-
-            return memberToProjectDao.listAll().stream()
-                    .map(p -> String.format("<option id='%s'>%s. %s %s %s %s</option>", p.getId(), p.getId(), p.getProjectName(), p.getMemberName(), p.getTaskName(), p.getStatusName()))
-                    .collect(Collectors.joining(""));
-        /*else {
-            return memberToProjectDao.filter(memberName).stream()
-                    .map(p -> String.format("<option id='%s'>%s. %s %s %s %s</option>", p.getId(), p.getId(), p.getProjectName(), p.getMemberName(), p.getTaskName(), p.getStatusName()))
-                    .collect(Collectors.joining(""));
-        } */
+        return memberToProjectDao.listAll().stream()
+                .map(p -> String.format("<option id='%s'>%s. %s %s %s %s</option>", p.getId(), p.getId(),
+                 p.getProjectName(), p.getMemberName(), p.getTaskName(), p.getStatusName()))
+                .collect(Collectors.joining(""));
     }
 }

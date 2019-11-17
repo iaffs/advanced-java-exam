@@ -58,9 +58,8 @@ public class MembersController  implements HttpController {
     }
 
     public String getBody() throws SQLException {
-        String body = memberDao.listAll().stream()
+        return memberDao.listAll().stream()
                 .map(p -> String.format("<option id='%s'> %s </option>", p.getId(), p.getMemberName()))
                 .collect(Collectors.joining(""));
-        return body;
     }
 }

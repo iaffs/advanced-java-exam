@@ -37,19 +37,4 @@ public class MemberDao extends AbstractDao<Member> {
         );
     }
 
-    public Member retrieve(long id) throws SQLException {
-        try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("select * from members where id= ?")) {
-                statement.setLong(1, id);
-                try (ResultSet rs = statement.executeQuery()) {
-                    if (rs.next()) {
-                        return readObject(rs);
-                    } else {
-                        return null;
-                    }
-                }
-            }
-        }
-    }
-
 }

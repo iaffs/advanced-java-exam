@@ -22,7 +22,6 @@ public class Status {
         return this.name;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,10 +31,12 @@ public class Status {
         Status status = (Status) o;
         return id == status.id && Objects.equals(name, status.name);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
     @Override
     public String toString() {
         return "Status{" +

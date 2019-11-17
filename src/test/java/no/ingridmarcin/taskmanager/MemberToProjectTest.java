@@ -10,16 +10,6 @@ public class MemberToProjectTest {
 
     private JdbcDataSource dataSource = DatabaseTest.testDataSource();
 
-    public MemberToProject simpleAssignment() {
-        MemberToProject memberToProject = new MemberToProject();
-        memberToProject.setId(1);
-        memberToProject.setMemberName("Joseph");
-        memberToProject.setProjectName("Vacanza");
-        memberToProject.setTaskName("cleaning");
-        memberToProject.setStatusName("ongoing");
-        return memberToProject;
-    }
-
     @Test
     void shouldFilterByName() throws SQLException {
 
@@ -42,6 +32,13 @@ public class MemberToProjectTest {
                 .contains("done");
     }
 
-
-
+    private MemberToProject simpleAssignment() {
+        MemberToProject memberToProject = new MemberToProject();
+        memberToProject.setId(1);
+        memberToProject.setMemberName("Joseph");
+        memberToProject.setProjectName("Vacanza");
+        memberToProject.setTaskName("cleaning");
+        memberToProject.setStatusName("ongoing");
+        return memberToProject;
+    }
 }

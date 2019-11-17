@@ -19,7 +19,6 @@ public abstract class AbstractDao<T> {
 
     public abstract void insertObject(T project, PreparedStatement statement) throws SQLException;
 
-
     public long insert(T projectName, String sql1) throws SQLException {
         try (Connection conn = dataSource.getConnection()) {
             try (PreparedStatement statement = conn.prepareStatement(sql1, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -31,6 +30,7 @@ public abstract class AbstractDao<T> {
             }
         }
     }
+
     // used only to change status
     public void update(String sql, String status, long id) throws SQLException {
         try (Connection conn = dataSource.getConnection()) {
@@ -60,14 +60,11 @@ public abstract class AbstractDao<T> {
         }
     }
 
-
-
     public List<T> listAll(String sql) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 try (ResultSet rs = statement.executeQuery()) {
                     List<T> result = new ArrayList<>();
-
                     while (rs.next()) {
                         result.add(readObject(rs));
                     }
