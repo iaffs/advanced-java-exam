@@ -60,5 +60,5 @@ Dette har vært et emne med veldig bratt læringskurve, og vi sitter igjen med e
 
 ## Link til video
 - Ingrid-Alice - https://www.youtube.com/watch?v=_mnyj84_Bgw&feature=youtu.be
-- Marcin - 
+- Marcin - https://www.youtube.com/watch?v=ZD0-xuIWK5Y&feature=youtu.be
 
