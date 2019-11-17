@@ -1,11 +1,39 @@
 @startuml
 
-TaskManagerServer <-- AbstractDao
-TaskManagerServer <-- MemberDao
-TaskManagerServer <-- MemberToProjectDao
-TaskManagerServer <-- ProjectDao
-TaskManagerServer <-- StatusDao
-TaskManagerServer <-- TasksDao
+TaskManagerServer --> MembersController
+TaskManagerServer --> ProjectsController
+TaskManagerServer --> StatusController
+TaskManagerServer --> TaskController
+
+AbstractDao --> MemberDao
+AbstractDao --> ProjectDao
+AbstractDao --> MemberToProjectDao
+AbstractDao --> StatusDao
+AbstractDao --> TasksDao
+
+MembersController <-- Member
+MembersController <-- MemberDao
+
+MemberToProjectController <-- MemberToProject
+MemberToProjectController <-- MemberToProjectDao
+
+ProjectsController <-- Project
+ProjectsController <-- ProjectDao
+
+StatusController <-- Status
+StatusController <-- StatusDao
+
+TaskController <-- Task
+TaskController <-- TasksDao
+
+HttpController --> EchoHttpController
+HttpController --> FileHttpController
+
+MembersController --> HttpController
+MemberToProjectController --> HttpController
+ProjectsController --> HttpController
+StatusController --> HttpController
+TaskController --> HttpController
 
 
 +class TaskManagerServer {
@@ -17,7 +45,6 @@ TaskManagerServer <-- TasksDao
 +TaskName
 +StatusName
 }
-
 
 +abstract class AbstractDao {
 +{abstract} AbstractDao()
@@ -31,8 +58,12 @@ TaskManagerServer <-- TasksDao
 +MemberDao()
 #Member readObject()
 + insert()
-+List<T> ListAll()
 +Member retrieve()
+}
+
++class MembersController {
++ MembersController()
++ void handle()
 }
 
 +class MemberToProjectDao {
@@ -41,14 +72,12 @@ TaskManagerServer <-- TasksDao
 # MemberToProject readObject()
 + insert()
 + void insert()
-+List<T> ListAll()
 }
 
 +class ProjectDao {
 + ProjectDao()
 + void insertObject()
 # Project readObject()
-+List<T> ListAll()
 +List<> listSelectedProjects()
 + Project retrieve()
 }
@@ -66,6 +95,20 @@ TaskManagerServer <-- TasksDao
 + void insertObject()
 # Status readObject()
 + insert()
-+ List<T> ListAll()
 }
+
++interface HttpController {
++ void handle()
+}
+
++class EchoHttpController {
++ void handle
+}
+
++class FileHttpController {
++ FileHttpController
+- {static} final logger
++ void handle
+}
+
 @enduml
