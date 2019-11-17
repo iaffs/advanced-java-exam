@@ -36,13 +36,6 @@ public class MemberDao extends AbstractDao<Member> {
                 "select * from members"
         );
     }
-    public List<Member> listAssignedMembers(long id) throws SQLException {
-        return listAll(
-                "select * from members join member_to_project on members.id = member_to_project.member_id " +
-                     " where member_to_project.project_id = "
-                        + id
-        );
-    }
 
     public Member retrieve(long id) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
@@ -59,10 +52,4 @@ public class MemberDao extends AbstractDao<Member> {
         }
     }
 
-    public String listToString(List <Member> member) {
-        return Arrays.toString((member).toArray())
-                .replace("[", " ")
-                .replace("]", "")
-                .replace(",", "");
-    }
 }

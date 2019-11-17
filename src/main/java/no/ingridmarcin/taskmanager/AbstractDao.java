@@ -77,13 +77,5 @@ public abstract class AbstractDao<T> {
         }
     }
 
-    public String listToString(List <T> object) {
-        return Arrays.toString((object).toArray())
-                .replace("[", " ")
-                .replace("]", "")
-                .replace(",", "");
-    }
-
-
     protected abstract T readObject(ResultSet rs) throws SQLException;
 }
