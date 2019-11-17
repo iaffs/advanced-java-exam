@@ -29,12 +29,6 @@ class HttpClientResponse extends HttpMessage {
         return headers.get(key);
     }
 
-    /*public int getContentLength() {
-        return Integer.parseInt(getHeader("Content-Length"));
-    }
-
-     */
-
     public String getBody() {
         return body;
     }
