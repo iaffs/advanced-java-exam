@@ -1,5 +1,7 @@
 package no.ingridmarcin.taskmanager;
 
+import no.ingridmarcin.taskmanager.daos.StatusDao;
+import no.ingridmarcin.taskmanager.objects.Status;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.Test;
 

@@ -2,6 +2,7 @@ package no.ingridmarcin.http;
 
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HttpClientTest {
@@ -18,5 +19,12 @@ public class HttpClientTest {
         HttpClient client = new HttpClient("urlecho.appspot.com", 80,"/echo?status=401");
         HttpClientResponse response = client.executeRequest("GET");
         assertEquals(401, response.getStatusCode());
+    }
+
+    @Test
+    void shouldReadBody() throws IOException {
+        HttpClient client = new HttpClient("urlecho.appspot.com", 80,"/echo?body=Hello");
+        HttpClientResponse response = client.executeRequest("GET");
+        assertEquals("Hello", response.getBody());
     }
 }

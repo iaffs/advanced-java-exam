@@ -1,7 +1,9 @@
-package no.ingridmarcin.taskmanager;
+package no.ingridmarcin.taskmanager.controllers;
 
 import no.ingridmarcin.http.HttpController;
 import no.ingridmarcin.http.HttpServer;
+import no.ingridmarcin.taskmanager.objects.Member;
+import no.ingridmarcin.taskmanager.daos.MemberDao;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -10,27 +12,28 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class StatusController implements HttpController {
-    private StatusDao statusDao;
+public class MembersController  implements HttpController {
+    private MemberDao memberDao;
 
-    public StatusController(StatusDao statusDao) {
-        this.statusDao = statusDao;
+    public MembersController(MemberDao memberDao){
+        this.memberDao = memberDao;
     }
 
     @Override
     public void handle(String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream) throws IOException {
-
         try {
             if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
-                Status status = new Status();
+                Member member = new Member();
 
-                String statusName = java.net.URLDecoder.decode(queryParameters.get("name"), StandardCharsets.UTF_8);
+                String memberName = java.net.URLDecoder.decode(queryParameters.get("name"), StandardCharsets.UTF_8);
+                String mail = java.net.URLDecoder.decode(queryParameters.get("mail"), StandardCharsets.UTF_8);
 
-                status.setStatusName(statusName);
-                statusDao.insert(status);
+                member.setMemberName(memberName);
+                member.setMail(mail);
+                memberDao.insert(member);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
-                        "Location: http://localhost:8080/status.html\r\n" +
+                        "Location: http://localhost:8080/createMember.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
             } else {
@@ -53,11 +56,12 @@ public class StatusController implements HttpController {
                     "\r\n" +
                     message).getBytes());
         }
+
     }
 
     public String getBody() throws SQLException {
-        return statusDao.listAll().stream()
-                .map(p -> String.format("<option id='%s'>%s</option>", p.getId(), p.getStatusName()))
+        return memberDao.listAll().stream()
+                .map(p -> String.format("<option id='%s'> %s </option>", p.getId(), p.getMemberName()))
                 .collect(Collectors.joining(""));
     }
 }

@@ -1,9 +1,8 @@
-package no.ingridmarcin.taskmanager;
-
+package no.ingridmarcin.taskmanager.objects;
 
 import java.util.Objects;
 
-public class Task {
+public class Status {
     private long id;
     private String name;
 
@@ -11,18 +10,17 @@ public class Task {
         this.id = id;
     }
 
-    public void setTaskName(String name) {
-        this.name = name;
-    }
-
-    public String getTaskName() {
-        return this.name;
-    }
-
     public long getId() {
         return id;
     }
 
+    public void setStatusName(String name) {
+        this.name = name;
+    }
+
+    public String getStatusName() {
+        return this.name;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -30,19 +28,20 @@ public class Task {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        Task task = (Task) o;
-        return id == task.id && Objects.equals(name, task.name);
+        Status status = (Status) o;
+        return id == status.id && Objects.equals(name, status.name);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
     @Override
     public String toString() {
-        return "Task{" +
+        return "Status{" +
                 "name='" + name + '\'' +
                 ", id=" + id +
                 '}';
     }
-
 }

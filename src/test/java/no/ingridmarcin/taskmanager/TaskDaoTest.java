@@ -1,5 +1,7 @@
 package no.ingridmarcin.taskmanager;
 
+import no.ingridmarcin.taskmanager.daos.TasksDao;
+import no.ingridmarcin.taskmanager.objects.Task;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +35,7 @@ public class TaskDaoTest {
 
     private Task sampleProject() {
         Task task = new Task();
-        String taskName = "Java Project";
+        String taskName = "clean table";
         task.setTaskName(taskName);
         return task;
     }

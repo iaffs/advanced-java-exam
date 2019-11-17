@@ -2,6 +2,8 @@ package no.ingridmarcin.taskmanager;
 
 
 import no.ingridmarcin.http.HttpServer;
+import no.ingridmarcin.taskmanager.controllers.*;
+import no.ingridmarcin.taskmanager.daos.*;
 import org.flywaydb.core.Flyway;
 import org.postgresql.ds.PGSimpleDataSource;
 

@@ -1,21 +1,21 @@
-package no.ingridmarcin.taskmanager;
+package no.ingridmarcin.taskmanager.objects;
+
 
 import java.util.Objects;
 
-public class Project {
+public class Task {
     private long id;
     private String name;
-
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public void setProjectName(String name) {
+    public void setTaskName(String name) {
         this.name = name;
     }
 
-    public String getName() {
+    public String getTaskName() {
         return this.name;
     }
 
@@ -23,27 +23,26 @@ public class Project {
         return id;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass())
             return false;
 
-        Project project = (Project) o;
-        return id == project.id &&
-                Objects.equals(name, project.name);
+        Task task = (Task) o;
+        return id == task.id && Objects.equals(name, task.name);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
     }
-
     @Override
     public String toString() {
-        return "Project{" +
-                "projectName='" + name + '\'' +
+        return "Task{" +
+                "name='" + name + '\'' +
                 ", id=" + id +
                 '}';
     }
+
 }

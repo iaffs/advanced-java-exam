@@ -1,25 +1,26 @@
-package no.ingridmarcin.taskmanager;
+package no.ingridmarcin.taskmanager.objects;
 
 import java.util.Objects;
 
-public class Status {
+public class Project {
     private long id;
     private String name;
+
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setStatusName(String name) {
+    public void setProjectName(String name) {
         this.name = name;
     }
 
-    public String getStatusName() {
+    public String getName() {
         return this.name;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override
@@ -28,8 +29,9 @@ public class Status {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        Status status = (Status) o;
-        return id == status.id && Objects.equals(name, status.name);
+        Project project = (Project) o;
+        return id == project.id &&
+                Objects.equals(name, project.name);
     }
 
     @Override
@@ -39,8 +41,8 @@ public class Status {
 
     @Override
     public String toString() {
-        return "Status{" +
-                "name='" + name + '\'' +
+        return "Project{" +
+                "projectName='" + name + '\'' +
                 ", id=" + id +
                 '}';
     }

@@ -1,4 +1,4 @@
-package no.ingridmarcin.taskmanager;
+package no.ingridmarcin.taskmanager.objects;
 
 import java.util.Objects;
 

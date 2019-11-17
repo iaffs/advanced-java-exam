@@ -1,4 +1,6 @@
-package no.ingridmarcin.taskmanager;
+package no.ingridmarcin.taskmanager.daos;
+
+import no.ingridmarcin.taskmanager.objects.Project;
 
 import javax.sql.DataSource;
 

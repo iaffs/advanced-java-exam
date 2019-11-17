@@ -1,7 +1,8 @@
-package no.ingridmarcin.taskmanager;
+package no.ingridmarcin.taskmanager.controllers;
 
 import no.ingridmarcin.http.HttpController;
 import no.ingridmarcin.http.HttpServer;
+import no.ingridmarcin.taskmanager.daos.MemberToProjectDao;
 
 import java.io.IOException;
 import java.io.OutputStream;
