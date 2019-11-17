@@ -5,7 +5,7 @@
 Link til Travis: https://travis-ci.com/Westerdals/pgr203-2019-eksamen-iaffs
 Link til GitHub repository: 
 
-Dette programmet er eksamen i PGR203 Avanasert Java av **Ingrid-Alice Bløtekjær - iaffs** og **Marcin Janecki - amish1188** for å kunne opprette prosjekt og prosjektdeltgere, samt legge til oppgaver og endre status på disse. Man kan også legge til ny statuskategori.
+Dette programmet er eksamen i PGR203 Avansert Java av **Ingrid-Alice Bløtekjær - iaffs** og **Marcin Janecki - amish1188** for å kunne opprette prosjekt og prosjektdeltgere, samt legge til oppgaver og endre status på disse. Man kan også legge til ny statuskategori.
 I programmet har man prosjekter, prosjektdeltagere, oppgaver, og status på disse, samt en hjelpetabell i databasen. Det er også et enkelt brukergrensesnitt som lar bruker opprette og tilegne deltagere prosjekter og oppgaver.
 
 ### Hvordan kjøre programmet
