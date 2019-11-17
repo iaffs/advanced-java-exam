@@ -26,7 +26,7 @@ public class TaskController implements HttpController {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 Task task = new Task();
 
-                String taskName = java.net.URLDecoder.decode(queryParameters.get("statusName"), StandardCharsets.UTF_8);
+                String taskName = java.net.URLDecoder.decode(queryParameters.get("name"), StandardCharsets.UTF_8);
 
                 task.setTaskName(taskName);
                 tasksDao.insert(task);
