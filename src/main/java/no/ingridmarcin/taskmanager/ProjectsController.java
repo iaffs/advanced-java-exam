@@ -24,7 +24,7 @@ public class ProjectsController implements HttpController {
         ) throws IOException {
 
             try {
-                if(requestAction.equals("POST")) {
+                if (requestAction.equals("POST")) {
                     queryParameters = HttpServer.parseQueryString(requestBody);
                     Project project = new Project();
 
@@ -37,8 +37,7 @@ public class ProjectsController implements HttpController {
                             "Location: http://localhost:8080/createProject.html\r\n" +
                             "Connection: close\r\n" +
                             "\r\n").getBytes());
-                }
-                else {
+                } else {
                     String status = "200";
                     String body = getBody();
                     outputStream.write(("HTTP/1.1 " + status + " OK\r\n" +
