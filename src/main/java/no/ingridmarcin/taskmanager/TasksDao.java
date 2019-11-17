@@ -41,7 +41,7 @@ public class TasksDao extends AbstractDao<Task> {
 
     public Task retrieve(long id) throws SQLException {
         try (Connection connection = dataSource.getConnection()) {
-            try (PreparedStatement statement = connection.prepareStatement("select * from tasks where id= ?")) {
+            try (PreparedStatement statement = connection.prepareStatement("select * from tasks where id = ?")) {
                 statement.setLong(1, id);
                 try (ResultSet rs = statement.executeQuery()) {
                     if (rs.next()) {

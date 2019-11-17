@@ -5,6 +5,7 @@ import no.ingridmarcin.http.HttpServer;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -19,19 +20,23 @@ public class MembersController  implements HttpController {
     @Override
     public void handle(String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream) throws IOException {
         try {
-            if(requestAction.equals("POST")) {
+            if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 Member member = new Member();
-                member.setMemberName(queryParameters.get("memberName"));
-                member.setMail(queryParameters.get("mail"));
+
+                String memberName = java.net.URLDecoder.decode(queryParameters.get("memberName"), StandardCharsets.UTF_8);
+                String mail = java.net.URLDecoder.decode(queryParameters.get("mail"), StandardCharsets.UTF_8);
+
+                member.setMemberName(memberName);
+                member.setMail(mail);
                 memberDao.insert(member);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                         "Location: http://localhost:8080/createMember.html\r\n" +
                         "Connection: close\r\n" +
                         "\r\n").getBytes());
                 return;
-            }
-            else {
+
+            } else {
                 String status = "200";
                 String body = getBody();
                 outputStream.write(("HTTP/1.1 " + status + " OK\r\n" +
