@@ -62,10 +62,16 @@ public class MemberToProjectController implements HttpController {
 
     public void executeAssignment(Map<String, String> queryParameters) throws SQLException {
         MemberToProject memberToProject = new MemberToProject();
-        memberToProject.setProjectName(queryParameters.get("projects"));
-        memberToProject.setMemberName(queryParameters.get("members"));
-        memberToProject.setTaskName(queryParameters.get("tasks"));
-        memberToProject.setStatusName(queryParameters.get("status"));
+
+        String projects = java.net.URLDecoder.decode(queryParameters.get("projects"), StandardCharsets.UTF_8);
+        String members = java.net.URLDecoder.decode(queryParameters.get("members"), StandardCharsets.UTF_8);
+        String tasks = java.net.URLDecoder.decode(queryParameters.get("tasks"), StandardCharsets.UTF_8);
+        String status = java.net.URLDecoder.decode(queryParameters.get("status"), StandardCharsets.UTF_8);
+
+        memberToProject.setProjectName(projects);
+        memberToProject.setMemberName(members);
+        memberToProject.setTaskName(tasks);
+        memberToProject.setStatusName(status);
         memberToProjectDao.insert(memberToProject);
         System.out.println();
     }
