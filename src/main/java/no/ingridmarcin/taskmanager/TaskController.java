@@ -5,6 +5,7 @@ import no.ingridmarcin.http.HttpServer;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -24,7 +25,10 @@ public class TaskController implements HttpController {
             if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 Task task = new Task();
-                task.setTaskName(queryParameters.get("name"));
+
+                String taskName = java.net.URLDecoder.decode(queryParameters.get("statusName"), StandardCharsets.UTF_8);
+
+                task.setTaskName(taskName);
                 tasksDao.insert(task);
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                         "Location: http://localhost:8080/createTask.html\r\n" +

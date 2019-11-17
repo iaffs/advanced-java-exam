@@ -35,7 +35,6 @@ TaskManagerServer <-- TasksDao
 + insert()
 +List<T> ListAll()
 +Member retrieve()
-+ listToString()
 }
 
 +class MemberToProjectDao {
@@ -45,7 +44,6 @@ TaskManagerServer <-- TasksDao
 + insert()
 + void insert()
 +List<T> ListAll()
-+ listToString()
 }
 
 +class ProjectDao {
@@ -55,7 +53,6 @@ TaskManagerServer <-- TasksDao
 +List<T> ListAll()
 +List<> listSelectedProjects()
 + Project retrieve()
-+ listToString()
 }
 
 +class TasksDao {

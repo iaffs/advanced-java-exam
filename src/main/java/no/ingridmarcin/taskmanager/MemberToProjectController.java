@@ -5,6 +5,7 @@ import no.ingridmarcin.http.HttpServer;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,10 +24,10 @@ public class MemberToProjectController implements HttpController {
     public void handle(String requestAction, String path, Map<String, String> queryParameters, String requestBody, OutputStream outputStream) throws IOException {
 
         try {
-            if(requestAction.equals("POST")) {
+            if (requestAction.equals("POST")) {
                 queryParameters = HttpServer.parseQueryString(requestBody);
                 // kinda risky but lets assume no one uses 'fetch' as a name or email
-                if(requestBody.contains("fetch")) {
+                if (requestBody.contains("fetch")) {
                     updateStatus(queryParameters);
                     this.option = 0;
                 } else if (requestBody.contains("filter")) {
@@ -35,7 +36,7 @@ public class MemberToProjectController implements HttpController {
                 }
                 else {
                     executeAssignment(queryParameters);
-                    this.option =0;
+                    this.option = 0;
                 }
                 outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                         "Location: http://localhost:8080/assignMemberToProjects.html\r\n" +
@@ -74,6 +75,7 @@ public class MemberToProjectController implements HttpController {
         memberToProject.setTaskName(queryParameters.get("tasks"));
         memberToProject.setStatusName(queryParameters.get("status"));
         memberToProjectDao.insert(memberToProject);
+        System.out.println();
     }
 
     public void updateStatus(Map<String, String> queryParameters) throws SQLException {

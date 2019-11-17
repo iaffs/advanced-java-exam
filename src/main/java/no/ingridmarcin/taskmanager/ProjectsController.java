@@ -5,6 +5,7 @@ import no.ingridmarcin.http.HttpServer;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -26,7 +27,11 @@ public class ProjectsController implements HttpController {
                 if(requestAction.equals("POST")) {
                     queryParameters = HttpServer.parseQueryString(requestBody);
                     Project project = new Project();
-                    project.setProjectName(queryParameters.get("projectName"));
+
+                    String projectName = java.net.URLDecoder.decode(queryParameters.get("projectName"), StandardCharsets.UTF_8);
+
+                    project.setProjectName(projectName);
+
                     dao.insert(project);
                     outputStream.write(("HTTP/1.1 302 Redirect\r\n" +
                             "Location: http://localhost:8080/createProject.html\r\n" +
