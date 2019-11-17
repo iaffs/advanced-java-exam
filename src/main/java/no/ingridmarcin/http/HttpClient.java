@@ -21,10 +21,10 @@ public class HttpClient {
         setRequestHeader("Connection", "close");
     }
 
-    // this is the code where client is writing request to the server. Only client can start a communication in
-    // client-server architecture
+    /* this is the code where client is writing request to the server. Only client can start a communication in
+    client-server architecture */
     public HttpClientResponse executeRequest(final String httpMethod) throws IOException {
-        try(Socket socket = new Socket(host, port)) {
+        try (Socket socket = new Socket(host, port)) {
             if (body != null) {
                 setRequestHeader("Content-Length", String.valueOf(body.length()));
             }

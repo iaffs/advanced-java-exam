@@ -20,6 +20,7 @@ public class HttpMessage {
         return line.toString();
     }
 
+
     static Map<String, String> readHeaders(InputStream inputStream) throws IOException {
         Map<String, String> headers = new HashMap<>();
         String headerLine;
@@ -30,6 +31,7 @@ public class HttpMessage {
         }
         return  headers;
     }
+
 
     static String readBody(Map<String, String> headers, InputStream inputStream) throws IOException {
         if (headers.containsKey("Content-Length")) {

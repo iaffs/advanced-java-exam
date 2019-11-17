@@ -86,7 +86,7 @@ public class HttpServer {
         return parameters;
     }
 
-    public int getPort(){
+    public int getPort() {
         return serverSocket.getLocalPort();
     }
 

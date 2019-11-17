@@ -26,7 +26,7 @@ public class MemberToProject {
         return id;
     }
 
-    public void setMemberName(String memberName){
+    public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
@@ -34,7 +34,7 @@ public class MemberToProject {
         return memberName;
     }
 
-    public void setProjectName(String projectName){
+    public void setProjectName(String projectName) {
         this.projectName = projectName;
     }
 
