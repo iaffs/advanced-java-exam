@@ -18,7 +18,7 @@ I programmet har man prosjekter, prosjektdeltagere, oppgaver, og status på diss
   - dataSource.username = brukernavn til databasebruker
   - dataSource.password = passord til databasebruker
 
-6.) Etter du har kjørt mvn package kan du kjøre serveren fra target undermappen ved å benytte: java -jar target/task-manager-1.0-SNAPSHOT.jar
+3.) Etter du har kjørt mvn package kan du kjøre serveren med java -jar target/task-manager-1.0-SNAPSHOT.jar
  
  ## Funksjonalitet
 Programmet har et brukergrensesnitt som kan besøkes ved å bruke localhost:8080 i nettleseren.
