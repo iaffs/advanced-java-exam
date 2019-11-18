@@ -50,11 +50,11 @@ public class HttpServerTest {
     @Test
     void shouldReturnFileFromDisk() throws IOException {
         server.setFileLocation("target");
-        String fileContent = "Hello Kristiania " + System.currentTimeMillis();
+        String fileContent = "Hello Kristiania";
         Files.writeString(Paths.get("target","somefile.txt"), fileContent);
-        HttpClient client = new HttpClient("localhost", server.getPort(), "/testfile.txt");
+        HttpClient client = new HttpClient("localhost", server.getPort(), "/somefile.txt");
         HttpClientResponse response = client.executeRequest("GET");
-        assertEquals("Not found", response.getBody());
+        assertEquals("Hello Kristiania", response.getBody());
     }
 
 }
