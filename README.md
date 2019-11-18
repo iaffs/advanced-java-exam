@@ -16,7 +16,8 @@ I programmet har man prosjekter, prosjektdeltagere, oppgaver, og status på diss
 2.) Konfigurasjonsfilen må hete task-manager.properties og må inneholde følgende:
   - dataSource.url = jdbc:postgresql://localhost:5432/navnetPåDinDatabase
   - dataSource.username = brukernavn til databasebruker
-  - dataSource.password = passord til databasebtukrt
+  - dataSource.password = passord til databasebruker
+
 6.) Etter du har kjørt mvn package kan du kjøre serveren fra target undermappen ved å benytte: java -jar target/task-manager-1.0-SNAPSHOT.jar
  
  ## Funksjonalitet
