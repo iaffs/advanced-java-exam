@@ -43,7 +43,7 @@ Dette har vært et emne med veldig bratt læringskurve, og vi sitter igjen med e
  
  ## Hva vi lærte underveis
  
- Vi lærte at det er lurt å være aktiv med testene, gjerne i forkant av funsksjonell kode.
+ Vi lærte at det er lurt å være aktiv med testene, gjerne i forkant av funksjonell kode.
  Vi lærte nok en gang at kommentarer er viktige, og at de også burde gjøres underveis.
  Vi lærte at det lureste er å programmere sammen siden man får mye utbytte av hverandre i en slik prosess.
  
