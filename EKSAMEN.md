@@ -126,19 +126,19 @@ body {
 
 ## Vedlegg: Sjekkliste for innlevering
 
-* [ ] Dere har registrert link til GitHub repository i Wiseflow
+* [x] Dere har registrert link til GitHub repository i Wiseflow
 * [x] Koden er sjekket inn på github.com/Westerdals-repository
 * [x] GitHub repository er private, men delt med gruppen dere gjør hverandrevurdering på
-* [ ] Dere har mottatt minst 2 positive og 2 korrektive GitHub issues i github repository fra en annen gruppe
+* [x] Dere har mottatt minst 2 positive og 2 korrektive GitHub issues i github repository fra en annen gruppe
 * [x] Dere har committed kode med begge prosjektdeltagernes GitHub konto (alternativt: README beskriver arbeidsform)
 
 ### README.md
 
-* [ ] `README.md` inneholder en korrekt link til Travis CI
-* [ ] `README.md` beskriver prosjektets funksjonalitet, hvordan man bygger det og hvordan man kjører det 
-* [ ] `README.md` beskriver eventuell ekstra leveranse utover minimum
-* [ ] `README.md` inneholder link til en diagram som viser datamodellen
-* [ ] Dere har gitt minst 2 positive og 2 korrektive GitHub issues til en annen gruppe og inkluderer link til disse fra README.md
+* [x] `README.md` inneholder en korrekt link til Travis CI
+* [x] `README.md` beskriver prosjektets funksjonalitet, hvordan man bygger det og hvordan man kjører det 
+* [x] `README.md` beskriver eventuell ekstra leveranse utover minimum
+* [x] `README.md` inneholder link til en diagram som viser datamodellen
+* [x] Dere har gitt minst 2 positive og 2 korrektive GitHub issues til en annen gruppe og inkluderer link til disse fra README.md
 
 ### Koden
 
@@ -162,7 +162,7 @@ body {
 * [x] Avansert datamodell (mer enn 3 tabeller)
 * [ ] Avansert funksjonalitet (redigering av prosjektmedlemmer, statuskategorier, prosjekter)
 * [ ] Implementasjon av cookies for å konstruere sesjoner
-* [ ] UML diagram som dokumenterer datamodell og/eller arkitektur (presentert i README.md)
+* [x] UML diagram som dokumenterer datamodell og/eller arkitektur (presentert i README.md)
 * [x] Rammeverk rundt Http-håndtering (en god HttpMessage class med HttpRequest og HttpResponse subtyper) som gjenspeiler RFC7230
 * [x] Korrekt håndtering av norske tegn i HTTP
 * [x] God bruk av DAO-pattern
