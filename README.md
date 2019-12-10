@@ -56,10 +56,3 @@ Dette har vært et emne med veldig bratt læringskurve, og vi sitter igjen med e
 
 * https://github.com/Westerdals/pgr203-2019-eksamen-iaffs/issues
 
-## Evaluering gitt til annen gruppe
-* https://github.com/Westerdals/pgr203-2019-eksamen-SeventhDisaster/issues
-
-## Link til video
-- Ingrid-Alice - https://www.youtube.com/watch?v=_mnyj84_Bgw&feature=youtu.be
-- Marcin - https://www.youtube.com/watch?v=ZD0-xuIWK5Y&feature=youtu.be
-
